@@ -366,9 +366,9 @@ FodyWeavers.xsd
 /Rukn.Navisworks.SelectByRevitId.Installer/Rukn.Navisworks.SelectByRevitId.msi
 /Rukn.Navisworks.SelectByRevitId.Installer/Rukn.Navisworks.SelectByRevitId.exe
 
-Pris.SelectByRevitId.bundle/
+Rukn.Navisworks.SelectByRevitId.bundle/
 SelectByRevitId.bundle/
 
-Rukn.Navisworks.SelectByRevitId.Installer/Pris.SelectByRevitId.exe
+Rukn.Navisworks.SelectByRevitId.Installer/Rukn.Navisworks.SelectByRevitId.exe
 
-Pris.SelectByRevitId.bundle.zip
+Rukn.Navisworks.SelectByRevitId.bundle.zip

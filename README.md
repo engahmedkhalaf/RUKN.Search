@@ -1,10 +1,6 @@
 # RUKNBIM - Select by Revit ID
 
-[![RUKNBIM Banner](https://s3.us-east-1.amazonaws.com/everse.assets/GithubReadme/Pris.png)](https://github.com/RuknDevelopment/Rukn.Navisworks.SelectByRevitId/wiki)
-
 **RUKNBIM - Select by Revit ID** is a powerful, free add-in for Autodesk® Navisworks® that allows users to quickly locate and select model elements using their original Revit Element IDs.
-
-If you find this add-in helpful, please consider leaving a review on the [Autodesk AppStore](https://apps.autodesk.com/NAVIS/en/Detail/Index?id=7106599322742572339&appLang=en&os=Win64).
 
 ---
 
@@ -35,10 +31,6 @@ Autodesk Navisworks stores original Revit Element IDs within the internal proper
 ## Supported Versions
 
 RUKNBIM - Select by Revit ID is compiled and verified to work on the following Autodesk Navisworks versions (both Simulate and Manage):
-* Navisworks **2018**
-* Navisworks **2019**
-* Navisworks **2020**
-* Navisworks **2021**
 * Navisworks **2022**
 * Navisworks **2023**
 * Navisworks **2024**
@@ -60,7 +52,10 @@ For developers looking to inspect or build the project:
 
 ## Installation
 
-You can download the installer directly from the [Autodesk App Store](https://apps.autodesk.com/NAVIS/en/Detail/Index?id=7106599322742572339&appLang=en&os=Win64).
+To install the add-in:
+1. Download the compiled release `Rukn.Navisworks.SelectByRevitId.bundle` folder.
+2. Copy the `.bundle` folder into your Autodesk plugins folder:
+   `%appdata%\Autodesk\ApplicationPlugins\`
 
 ---
 

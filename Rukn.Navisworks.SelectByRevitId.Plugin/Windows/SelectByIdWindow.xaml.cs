@@ -57,7 +57,6 @@ namespace Rukn.Navisworks.SelectByRevitId.Plugin
         {
             var s = Tools.splitString(textBox.Text);
             Tools.getElements(s);
-            this.DialogResult = true;
         }
 
         private void Close_Button(object sender, RoutedEventArgs e)

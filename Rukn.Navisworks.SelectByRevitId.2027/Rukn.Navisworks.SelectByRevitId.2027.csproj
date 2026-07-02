@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9D01EAE5-4574-4D7A-A99A-EB8B2C21ABFD}</ProjectGuid>
+    <ProjectGuid>{5A2309FF-CEDD-467A-8AF1-B5CF5249439D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Rukn.Navisworks.SelectByRevitId</RootNamespace>
@@ -35,7 +35,7 @@
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Speckle.Navisworks.API" Version="2024.0.0" />
+    <PackageReference Include="Speckle.Navisworks.API" Version="2027.0.0" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -74,12 +74,13 @@
       xcopy /Y /S /I "$(ProjectDir)..\Rukn.Navisworks.SelectByRevitId.Common\Images" "$(TargetDir)"
       xcopy /Y /S /I "$(ProjectDir)..\Rukn.Navisworks.SelectByRevitId.Common\Images" "$(TargetDir)Images"
       
-      xcopy /Y "$(TargetPath)" "$(APPDATA)\Autodesk\ApplicationPlugins\Rukn.Navisworks.SelectByRevitId.bundle\Contents\dlls\2024\RUKNBIM.SelectByRevitId\"
-      xcopy /Y /S /I "$(ProjectDir)..\Rukn.Navisworks.SelectByRevitId.Common\en-US" "$(APPDATA)\Autodesk\ApplicationPlugins\Rukn.Navisworks.SelectByRevitId.bundle\Contents\dlls\2024\RUKNBIM.SelectByRevitId\en-US\"
-      xcopy /Y /S /I "$(ProjectDir)..\Rukn.Navisworks.SelectByRevitId.Common\Images" "$(APPDATA)\Autodesk\ApplicationPlugins\Rukn.Navisworks.SelectByRevitId.bundle\Contents\dlls\2024\RUKNBIM.SelectByRevitId\"
-      xcopy /Y /S /I "$(ProjectDir)..\Rukn.Navisworks.SelectByRevitId.Common\Images" "$(APPDATA)\Autodesk\ApplicationPlugins\Rukn.Navisworks.SelectByRevitId.bundle\Contents\dlls\2024\RUKNBIM.SelectByRevitId\Images\"
+      xcopy /Y "$(TargetPath)" "$(APPDATA)\Autodesk\ApplicationPlugins\Rukn.Navisworks.SelectByRevitId.bundle\Contents\dlls\2027\RUKNBIM.SelectByRevitId\"
+      xcopy /Y /S /I "$(ProjectDir)..\Rukn.Navisworks.SelectByRevitId.Common\en-US" "$(APPDATA)\Autodesk\ApplicationPlugins\Rukn.Navisworks.SelectByRevitId.bundle\Contents\dlls\2027\RUKNBIM.SelectByRevitId\en-US\"
+      xcopy /Y /S /I "$(ProjectDir)..\Rukn.Navisworks.SelectByRevitId.Common\Images" "$(APPDATA)\Autodesk\ApplicationPlugins\Rukn.Navisworks.SelectByRevitId.bundle\Contents\dlls\2027\RUKNBIM.SelectByRevitId\"
+      xcopy /Y /S /I "$(ProjectDir)..\Rukn.Navisworks.SelectByRevitId.Common\Images" "$(APPDATA)\Autodesk\ApplicationPlugins\Rukn.Navisworks.SelectByRevitId.bundle\Contents\dlls\2027\RUKNBIM.SelectByRevitId\Images\"
       xcopy /Y "$(ProjectDir)..\Rukn.Navisworks.SelectByRevitId.Common\PackageContents.xml" "$(APPDATA)\Autodesk\ApplicationPlugins\Rukn.Navisworks.SelectByRevitId.bundle\"
     </PostBuildEvent>
   </PropertyGroup>
 </Project>
+
 

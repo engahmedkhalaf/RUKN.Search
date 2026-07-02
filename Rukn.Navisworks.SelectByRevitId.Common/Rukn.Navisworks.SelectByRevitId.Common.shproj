@@ -21,7 +21,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\Heart.jpg" />
+
     <Content Include="Images\ElementID_16.ico" />
     <Content Include="Images\ElementID_32.png" />
     <Content Include="Images\SelectByRevitId.png" />

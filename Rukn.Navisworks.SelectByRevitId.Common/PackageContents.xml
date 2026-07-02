@@ -51,4 +51,8 @@
 		<RuntimeRequirements OS="Win64" Platform="NAVMAN|NAVSIM" SeriesMin="Nw23" SeriesMax="Nw23" />
 		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2026/RUKNBIM.SelectByRevitId/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
 	</Components>
+	<Components Description="2027">
+		<RuntimeRequirements OS="Win64" Platform="NAVMAN|NAVSIM" SeriesMin="Nw24" SeriesMax="Nw24" />
+		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2027/RUKNBIM.SelectByRevitId/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
+	</Components>
 </ApplicationPackage>

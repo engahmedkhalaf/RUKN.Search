@@ -3,11 +3,15 @@ using Rukn.Navisworks.SelectByRevitId.Common.Application;
 using Rukn.Navisworks.SelectByRevitId.Plugin.Utils;
 
 
+using System.Windows.Interop;
+
 namespace Rukn.Navisworks.SelectByRevitId.Plugin
 {
     [Plugin("SelectByRevitId", IdentityInformation.DeveloperID, ToolTip = "Select by revit element ID", DisplayName = "RUKNBIM")]
     public class SelectByIdPlugin : CustomPlugin
     {
+        private static SelectByIdWindow _activeWindow;
+
         public int Execute(params string[] parameters)
         {
             Tools.SelectedIds = "";
@@ -18,8 +22,20 @@ namespace Rukn.Navisworks.SelectByRevitId.Plugin
             }
             else
             {
-                SelectByIdWindow selectByIdWindow = new SelectByIdWindow();
-                selectByIdWindow.ShowDialog();
+                if (_activeWindow != null && _activeWindow.IsLoaded)
+                {
+                    _activeWindow.Focus();
+                }
+                else
+                {
+                    _activeWindow = new SelectByIdWindow();
+                    
+                    var hwnd = Autodesk.Navisworks.Api.Application.Gui.MainWindow.Handle;
+                    var helper = new WindowInteropHelper(_activeWindow);
+                    helper.Owner = hwnd;
+                    
+                    _activeWindow.Show();
+                }
             }
 
             return 0;
