@@ -362,13 +362,13 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /Rukn.Navisworks.Plugin.bundle/Contents/dlls
-/Rukn.Navisworks.SelectByRevitId.bundle
-/Rukn.Navisworks.SelectByRevitId.Installer/Rukn.Navisworks.SelectByRevitId.msi
-/Rukn.Navisworks.SelectByRevitId.Installer/Rukn.Navisworks.SelectByRevitId.exe
+/RUKN.Search.bundle
+/RUKN.Search.Installer/RUKN.Search.msi
+/RUKN.Search.Installer/RUKN.Search.exe
 
-Rukn.Navisworks.SelectByRevitId.bundle/
+RUKN.Search.bundle/
 SelectByRevitId.bundle/
 
-Rukn.Navisworks.SelectByRevitId.Installer/Rukn.Navisworks.SelectByRevitId.exe
+RUKN.Search.Installer/RUKN.Search.exe
 
-Rukn.Navisworks.SelectByRevitId.bundle.zip
+RUKN.Search.bundle.zip

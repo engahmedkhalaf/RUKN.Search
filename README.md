@@ -44,16 +44,16 @@ RUKNBIM - Select by Revit ID is compiled and verified to work on the following A
 For developers looking to inspect or build the project:
 
 * **[RUKN.SelectByRevitId.sln](file:///d:/API%20Khalaf/Rukn.Bim.Api/TEST/RuknSelectByRevitId/RUKN.SelectByRevitId.sln):** The Visual Studio solution file compiling the plugins.
-* **[Rukn.Navisworks.SelectByRevitId.Common/](file:///d:/API%20Khalaf/Rukn.Bim.Api/TEST/RuknSelectByRevitId/Rukn.Navisworks.SelectByRevitId.Common):** Contains shared resources, ribbon initialization (`PluginRibbon.cs`, `PluginRibbon.xaml` localization), and the `PackageContents.xml` configuration for the Autodesk installer format.
-* **[Rukn.Navisworks.SelectByRevitId.Plugin/](file:///d:/API%20Khalaf/Rukn.Bim.Api/TEST/RuknSelectByRevitId/Rukn.Navisworks.SelectByRevitId.Plugin):** Houses the main execution entry points (`SelectByIdPlugin.cs`), GUI dialog window code/styles (`SelectByIdWindow.xaml`, `FeedbackWindow.xaml`), and search/selection logic (`Tools.cs`).
-* **[Rukn.Navisworks.SelectByRevitId.2024/](file:///d:/API%20Khalaf/Rukn.Bim.Api/TEST/RuknSelectByRevitId/Rukn.Navisworks.SelectByRevitId.2024):** Visual Studio target project template for building against Navisworks 2024 SDK.
+* **[RUKN.Search.Common/](file:///d:/API%20Khalaf/Rukn.Bim.Api/TEST/RuknSelectByRevitId/RUKN.Search.Common):** Contains shared resources, ribbon initialization (`PluginRibbon.cs`, `PluginRibbon.xaml` localization), and the `PackageContents.xml` configuration for the Autodesk installer format.
+* **[RUKN.Search.Plugin/](file:///d:/API%20Khalaf/Rukn.Bim.Api/TEST/RuknSelectByRevitId/RUKN.Search.Plugin):** Houses the main execution entry points (`SelectByIdPlugin.cs`), GUI dialog window code/styles (`SelectByIdWindow.xaml`, `FeedbackWindow.xaml`), and search/selection logic (`Tools.cs`).
+* **[RUKN.Search.2024/](file:///d:/API%20Khalaf/Rukn.Bim.Api/TEST/RuknSelectByRevitId/RUKN.Search.2024):** Visual Studio target project template for building against Navisworks 2024 SDK.
 
 ---
 
 ## Installation
 
 To install the add-in:
-1. Download the compiled release `Rukn.Navisworks.SelectByRevitId.bundle` folder.
+1. Download the compiled release `RUKN.Search.bundle` folder.
 2. Copy the `.bundle` folder into your Autodesk plugins folder:
    `%appdata%\Autodesk\ApplicationPlugins\`
 
@@ -62,8 +62,8 @@ To install the add-in:
 ## Contributing
 
 If you would like to contribute, report issues, or suggest new features:
-* Submit a [Pull Request](https://github.com/RuknDevelopment/Rukn.Navisworks.SelectByRevitId/pulls).
-* Open an [Issue / Feature Request](https://github.com/RuknDevelopment/Rukn.Navisworks.SelectByRevitId/issues).
+* Submit a [Pull Request](https://github.com/RuknDevelopment/RUKN.Search/pulls).
+* Open an [Issue / Feature Request](https://github.com/RuknDevelopment/RUKN.Search/issues).
 
 ---
 
