@@ -11,15 +11,16 @@
     xmlns:local="clr-namespace:Autodesk.Navisworks.Gui.Roamer.AIRLook;assembly=navisworks.gui.roamer">
     <!-- END STANDARD SECTION DO NOT EDIT -->
 
-    <RibbonTab Id="SelectByRevitId" KeyTip="T1">
+    <RibbonTab Id="RUKNBIM" KeyTip="T1">
         <RibbonPanel x:Uid="RibbonPane1_1">
             <RibbonPanelSource x:Uid="RibbonPanelSource_RibbonPanel_1" KeyTip="C1" Title="Select Revit Id">
 
+
                 <local:NWRibbonButton x:Uid="SelectByRevitId" Id="SelectByRevitId"
                             Size="Large"
-                            KeyTip="B1"
+                            KeyTip="B2"
                             ShowText="True"
-                            Text="RUKNBIM"
+                            Text="SelectByRevitId"
                             Orientation="Vertical"/>
             </RibbonPanelSource>
         </RibbonPanel>

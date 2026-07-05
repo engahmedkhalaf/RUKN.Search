@@ -11,8 +11,8 @@ namespace Rukn.Navisworks.Plugin.Common
 {
     [Plugin("SelectByRevitIdRibbon", IdentityInformation.DeveloperID, DisplayName = "RUKNBIM")]
     [RibbonLayout("PluginRibbon.xaml")]
-    [RibbonTab("SelectByRevitId", DisplayName = "RUKNBIM")]
-    [Command("SelectByRevitId", Icon = "ElementID_16.ico", LargeIcon = "ElementID_32.png", ToolTip = "RUKNBIM is a Select by Revit ID add-in for Autodesk® Navisworks®. It allows users to easily select specific element in a Navisworks model based on its unique Revit ID.", DisplayName = "RUKNBIM - Select by ID")]
+    [RibbonTab("RUKNBIM", DisplayName = "RUKNBIM")]
+    [Command("SelectByRevitId", Icon = "ElementID_16.ico", LargeIcon = "ElementID_32.png", ToolTip = "Select elements using their original Revit ID", DisplayName = "SelectByRevitId")]
     public class PluginRibbon : CommonCommandHandlerPlugin
     {
         public override int ExecuteCommand(string name, params string[] parameters)
