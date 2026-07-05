@@ -1404,12 +1404,12 @@
             <Viewbox Stretch="UniformToFill" Margin="0">
                 <Canvas Width="800" Height="600" Background="Transparent">
 
-                    <Path x:Name="RUKNBIMImage"
-                      Style="{DynamicResource RUKNBIMLogo}"
+                    <Path x:Name="RUKNSearchImage"
+                      Style="{DynamicResource RUKNSearchLogo}"
                       Canvas.Left="115"
                       Canvas.Top="54"/>
 
-                    <TextBlock x:Name="RUKNBIMText"
+                    <TextBlock x:Name="RUKNSearchText"
                                Text="RUKN Search"
                                FontSize="120"
                                FontWeight="Bold"
@@ -1429,16 +1429,16 @@
 
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Opacity" TargetName="RUKNBIMImage" Value="0.5"/>
-                <Setter Property="Opacity" TargetName="RUKNBIMText" Value="0.5"/>
+                <Setter Property="Opacity" TargetName="RUKNSearchImage" Value="0.5"/>
+                <Setter Property="Opacity" TargetName="RUKNSearchText" Value="0.5"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="true">
-                <Setter Property="Opacity" TargetName="RUKNBIMImage" Value="0.3"/>
-                <Setter Property="Opacity" TargetName="RUKNBIMText" Value="0.3"/>
+                <Setter Property="Opacity" TargetName="RUKNSearchImage" Value="0.3"/>
+                <Setter Property="Opacity" TargetName="RUKNSearchText" Value="0.3"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Opacity" TargetName="RUKNBIMImage" Value="0.25"/>
-                <Setter Property="Opacity" TargetName="RUKNBIMText" Value="0.25"/>
+                <Setter Property="Opacity" TargetName="RUKNSearchImage" Value="0.25"/>
+                <Setter Property="Opacity" TargetName="RUKNSearchText" Value="0.25"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -1455,7 +1455,7 @@
         <Setter Property="Panel.ZIndex" Value="1"/>
     </Style>
 
-    <Style x:Key="RUKNBIMLetters" TargetType="{x:Type Path}">
+    <Style x:Key="RUKNSearchLetters" TargetType="{x:Type Path}">
         <Setter Property="Fill" Value="{DynamicResource MainGray}" />
         <Setter Property="Data">
             <Setter.Value>
@@ -1481,7 +1481,7 @@
     </Style>
 
 
-    <Style x:Key="RUKNBIMLogo" TargetType="{x:Type Path}">
+    <Style x:Key="RUKNSearchLogo" TargetType="{x:Type Path}">
         <Setter Property="Fill" Value="{DynamicResource WindowButtonColor}" />
         <Setter Property="Data">
             <Setter.Value>

@@ -10,7 +10,7 @@
         mc:Ignorable="d"
         Width="380"
         Height="580"
-        Title="By Levels"
+        Title="Model Processing"
         ResizeMode="CanResizeWithGrip"
         Topmost="False"
         ShowInTaskbar="True"
@@ -37,16 +37,15 @@
 
         <Grid Background="Transparent" RenderOptions.BitmapScalingMode="HighQuality" Margin="20">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/> <!-- Title Bar -->
-                <RowDefinition Height="Auto"/> <!-- Grid System -->
-                <RowDefinition Height="*"/>    <!-- Levels list -->
-                <RowDefinition Height="Auto"/> <!-- Section Cut -->
-                <RowDefinition Height="Auto"/> <!-- Buttons -->
-                <RowDefinition Height="Auto"/> <!-- Status Bar -->
+                <RowDefinition Height="Auto" /> <!-- Header -->
+                <RowDefinition Height="Auto" /> <!-- Separator -->
+                <RowDefinition Height="*" />    <!-- Content Area -->
+                <RowDefinition Height="Auto" /> <!-- Action Buttons -->
+                <RowDefinition Height="Auto" /> <!-- Status Bar -->
             </Grid.RowDefinitions>
 
-            <!-- Title Bar (Row 0) -->
-            <Grid Grid.Row="0" Margin="0,0,0,10">
+            <!-- Header -->
+            <Grid Grid.Row="0" Margin="0,-4,0,10">
                 <Button Click="Ruknbim_Link"
                         Background="Transparent"
                         BorderThickness="0"
@@ -59,15 +58,15 @@
                         </ControlTemplate>
                     </Button.Template>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Image Source="/RUKNBIM.SelectByRevitId;component/Resources/SelectByRevitId.png"
+                        <Image Source="/RUKN.Search;component/Resources/SelectByRevitId.png"
                                Height="28"
                                Stretch="Uniform"
                                SnapsToDevicePixels="True"
                                RenderOptions.BitmapScalingMode="HighQuality" />
-                        <TextBlock Text="BY LEVELS" 
+                        <TextBlock Text="MODEL PROCESSING" 
                                    Foreground="#18263c" 
                                    FontWeight="Bold" 
-                                   FontSize="15" 
+                                   FontSize="16" 
                                    VerticalAlignment="Center" 
                                    Margin="10,0,0,0"/>
                     </StackPanel>
@@ -80,89 +79,127 @@
                         VerticalAlignment="Center" />
             </Grid>
 
-            <!-- Grid System / Model selector (Row 1) -->
-            <Grid Grid.Row="1" Margin="0,0,0,10">
+            <!-- Separator Line -->
+            <Line Grid.Row="1" 
+                  Stroke="{DynamicResource MainGray}"
+                  X2="1000"
+                  Opacity="0.3"
+                  StrokeThickness="2"
+                  Margin="-20,0,-20,15" />
+
+            <!-- Content Area -->
+            <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <StackPanel Margin="0,0,10,0">
+                    
+                    <!-- Model Source Group -->
+                    <TextBlock Text="Model Source" FontWeight="Bold" Foreground="#18263c" FontSize="13" Margin="0,0,0,5"/>
+                    <Border BorderBrush="{DynamicResource SecondaryGray}" BorderThickness="0,0,0,1" Opacity="0.3" Margin="0,0,0,10"/>
+                    <StackPanel Margin="10,0,0,15">
+                        <!-- Model Dropdown -->
+                        <Grid Margin="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Model:" VerticalAlignment="Center" Margin="0,0,10,0" Width="80" Grid.Column="0"/>
+                            <ComboBox Name="ComboModel" SelectionChanged="ComboModel_SelectionChanged" Height="28" HorizontalAlignment="Stretch" Grid.Column="1">
+                            </ComboBox>
+                        </Grid>
+                    </StackPanel>
+
+                    <!-- Reference Settings Group -->
+                    <TextBlock Text="Reference Settings" FontWeight="Bold" Foreground="#18263c" FontSize="13" Margin="0,0,0,5"/>
+                    <Border BorderBrush="{DynamicResource SecondaryGray}" BorderThickness="0,0,0,1" Opacity="0.3" Margin="0,0,0,10"/>
+                    <Grid Margin="10,0,0,15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Offset Plane -->
+                        <TextBlock Text="Offset Plane:" VerticalAlignment="Center" Margin="0,0,0,8" Grid.Row="0" Grid.Column="0"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8" Grid.Row="0" Grid.Column="1">
+                            <TextBox Name="TextOffset" Text="0.000" Width="80" Height="28" Padding="5,2" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,5,0"/>
+                            <TextBlock Text="[m]" VerticalAlignment="Center" Foreground="{DynamicResource SecondaryGray}"/>
+                        </StackPanel>
+
+                        <!-- Units -->
+                        <TextBlock Text="Units:" VerticalAlignment="Top" Margin="0,5,0,0" Grid.Row="1" Grid.Column="0"/>
+                        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Margin="0,5,0,0">
+                            <RadioButton Name="RadioMM" GroupName="UnitGroup" Content="mm" Margin="0,0,15,0" />
+                            <RadioButton Name="RadioCM" GroupName="UnitGroup" Content="cm" Margin="0,0,15,0" />
+                            <RadioButton Name="RadioM" GroupName="UnitGroup" Content="m" IsChecked="True" Margin="0,0,15,0" />
+                            <RadioButton Name="RadioFT" GroupName="UnitGroup" Content="ft" />
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Apply To Group -->
+                    <TextBlock Text="Apply To" FontWeight="Bold" Foreground="#18263c" FontSize="13" Margin="0,0,0,5"/>
+                    <Border BorderBrush="{DynamicResource SecondaryGray}" BorderThickness="0,0,0,1" Opacity="0.3" Margin="0,0,0,10"/>
+                    <StackPanel Margin="10,0,0,15">
+                        <RadioButton GroupName="ApplyToGroup" Content="All Levels" Margin="0,0,0,8" />
+                        <RadioButton GroupName="ApplyToGroup" Content="Selected Levels" IsChecked="True" Margin="0,0,0,8" />
+                    </StackPanel>
+
+                    <!-- Levels Group -->
+                    <TextBlock Text="Levels" FontWeight="Bold" Foreground="#18263c" FontSize="13" Margin="0,0,0,5"/>
+                    <Border BorderBrush="{DynamicResource SecondaryGray}" BorderThickness="0,0,0,1" Opacity="0.3" Margin="0,0,0,10"/>
+                    <Border Background="#F4F7FA" CornerRadius="8" BorderBrush="#E0E6ED" BorderThickness="1" Margin="10,0,0,10">
+                        <StackPanel Name="PanelLevels" Margin="12,10">
+                        </StackPanel>
+                    </Border>
+                    
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Action Buttons Grid -->
+            <Grid Grid.Row="3" Margin="0,15,0,10">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Grid System:" VerticalAlignment="Center" Foreground="#18263c" FontWeight="SemiBold" FontSize="12" Margin="0,0,10,0" Grid.Column="0"/>
-                <ComboBox Name="ComboModel" SelectionChanged="ComboModel_SelectionChanged" Height="28" HorizontalAlignment="Stretch" Grid.Column="1">
-                </ComboBox>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Button Style="{DynamicResource ApplyButtonStyle}" 
+                        Content="Read Models" 
+                        Click="ReadModels_Click"
+                        Height="34" 
+                        Margin="0,0,5,8"
+                        Grid.Row="0" Grid.Column="0"/>
+                
+                <Button Style="{DynamicResource ApplyButtonStyle}" 
+                        Content="Generate Viewpoints" 
+                        Click="GenerateViewpoints_Click"
+                        Height="34" 
+                        Margin="5,0,0,8"
+                        Grid.Row="0" Grid.Column="1"/>
+
+                <Button Style="{DynamicResource ApplyButtonStyle}" 
+                        Content="Save Viewpoints" 
+                        Click="SaveViewpoints_Click"
+                        Height="34" 
+                        Margin="0,0,5,0"
+                        Grid.Row="1" Grid.Column="0"/>
+
+                <Button Style="{DynamicResource ApplyButtonStyle}" 
+                        Content="Export Data" 
+                        Click="ExportData_Click"
+                        Height="34" 
+                        Margin="5,0,0,0"
+                        Grid.Row="1" Grid.Column="1"/>
             </Grid>
 
-            <!-- Levels List Area (Row 2) -->
-            <Border Grid.Row="2" Background="#F4F7FA" CornerRadius="8" BorderBrush="#E0E6ED" BorderThickness="1" Margin="0,0,0,10">
-                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="10">
-                    <StackPanel Name="PanelLevels">
-                        <!-- Levels will be loaded here dynamically -->
-                    </StackPanel>
-                </ScrollViewer>
-            </Border>
-
-            <!-- Section Cut Group (Row 3) -->
-            <GroupBox Grid.Row="3" Header="Section Cut" FontWeight="SemiBold" Foreground="#18263c" Margin="0,0,0,10" Padding="10">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!-- Top Offset -->
-                    <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="0,0,10,0">
-                        <CheckBox Name="CheckOffsetTop" Content="Offset Top Z" IsChecked="True" FontWeight="Normal" VerticalAlignment="Center" Margin="0,0,0,4"/>
-                        <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
-                            <TextBlock Text="Amount:" VerticalAlignment="Center" FontWeight="Normal" Margin="0,0,5,0"/>
-                            <TextBox Name="TextOffsetTop" Text="-2" Width="60" Height="24" Padding="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
-                        </StackPanel>
-                    </StackPanel>
-
-                    <!-- Bottom Offset -->
-                    <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1" Margin="10,0,0,0">
-                        <CheckBox Name="CheckOffsetBottom" Content="Offset Bottom Z" IsChecked="True" FontWeight="Normal" VerticalAlignment="Center" Margin="0,0,0,4"/>
-                        <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
-                            <TextBlock Text="Amount:" VerticalAlignment="Center" FontWeight="Normal" Margin="0,0,5,0"/>
-                            <TextBox Name="TextOffsetBottom" Text="-1" Width="60" Height="24" Padding="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
-                        </StackPanel>
-                    </StackPanel>
-                </Grid>
-            </GroupBox>
-
-            <!-- Action Buttons (Row 4) -->
-            <StackPanel Grid.Row="4" Margin="0,0,0,8">
-                <Button Style="{DynamicResource ApplyButtonStyle}" 
-                        Content="Toggle Front/Back, Left/Right Planes" 
-                        Click="TogglePlanes_Click"
-                        Height="32" 
-                        Margin="0,0,0,8"
-                        HorizontalAlignment="Stretch"/>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Style="{DynamicResource ApplyButtonStyle}" 
-                            Content="OK" 
-                            Click="GenerateViewpoints_Click"
-                            Height="32" 
-                            Margin="0,0,5,0"
-                            Grid.Column="0"/>
-                    <Button Style="{DynamicResource ApplyButtonStyle}" 
-                            Content="Cancel" 
-                            Click="Close_Button"
-                            Height="32" 
-                            Margin="5,0,0,0"
-                            Grid.Column="1"/>
-                </Grid>
-            </StackPanel>
-
-            <!-- Status Bar (Row 5) -->
-            <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="0,0,0,0">
-                <TextBlock Text="Status: " Foreground="{DynamicResource SecondaryGray}" FontSize="11"/>
-                <TextBlock Name="TextBlockStatus" Text="Ready..." Foreground="#1b6ece" FontWeight="SemiBold" FontSize="11"/>
+            <!-- Status Bar -->
+            <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,5,0,0">
+                <TextBlock Text="Status: " Foreground="{DynamicResource SecondaryGray}" FontSize="12"/>
+                <TextBlock Name="TextBlockStatus" Text="Ready..." Foreground="#1b6ece" FontWeight="SemiBold" FontSize="12"/>
             </StackPanel>
 
         </Grid>

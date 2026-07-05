@@ -1,6 +1,6 @@
-# RUKNBIM - Select by Revit ID
+# RUKN Search - Select by Revit ID
 
-**RUKNBIM - Select by Revit ID** is a powerful, free add-in for Autodesk® Navisworks® that allows users to quickly locate and select model elements using their original Revit Element IDs.
+**RUKN Search - Select by Revit ID** is a powerful, free add-in for Autodesk® Navisworks® that allows users to quickly locate and select model elements using their original Revit Element IDs.
 
 ---
 
@@ -9,7 +9,7 @@
 * **Quick Element Selection:** Locate any Revit element inside Navisworks in seconds.
 * **Bulk Selection:** Select multiple elements at once by entering comma-separated IDs (e.g., `102435, 102436, 102440`).
 * **Validation & UI Feedback:** Built-in verification warns you if a Revit model is not loaded or if an invalid ID is entered.
-* **Ribbon Integration:** Adds a dedicated, easy-to-access **RUKNBIM** tab to the Autodesk Navisworks ribbon.
+* **Ribbon Integration:** Adds a dedicated, easy-to-access **RUKN Search** tab to the Autodesk Navisworks ribbon.
 
 ---
 
@@ -22,7 +22,7 @@ Autodesk Navisworks stores original Revit Element IDs within the internal proper
 ## Getting Started
 
 1. **Open your model:** Load a Revit model (NWC/NWD) in Autodesk Navisworks.
-2. **Launch the Add-in:** Navigate to the **RUKNBIM** tab on the Navisworks Ribbon and click the **RUKNBIM - Select by ID** button.
+2. **Launch the Add-in:** Navigate to the **RUKN Search** tab on the Navisworks Ribbon and click the **RUKN Search - Select by ID** button.
 3. **Enter Revit IDs:** Paste a single Revit Element ID or multiple comma-separated IDs into the text box.
 4. **Select:** Click **Select**. The corresponding elements will immediately be highlighted and selected in your Navisworks workspace.
 
@@ -30,7 +30,7 @@ Autodesk Navisworks stores original Revit Element IDs within the internal proper
 
 ## Supported Versions
 
-RUKNBIM - Select by Revit ID is compiled and verified to work on the following Autodesk Navisworks versions (both Simulate and Manage):
+RUKN Search - Select by Revit ID is compiled and verified to work on the following Autodesk Navisworks versions (both Simulate and Manage):
 * Navisworks **2022**
 * Navisworks **2023**
 * Navisworks **2024**

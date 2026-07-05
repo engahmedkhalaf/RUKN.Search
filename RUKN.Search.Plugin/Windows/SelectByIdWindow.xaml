@@ -69,7 +69,7 @@
                             <ContentPresenter />
                         </ControlTemplate>
                     </Button.Template>
-                    <Image Source="/RUKNBIM.SelectByRevitId;component/Resources/SelectByRevitId.png"
+                    <Image Source="/RUKN.Search;component/Resources/SelectByRevitId.png"
                            Height="28"
                            Stretch="Uniform"
                            SnapsToDevicePixels="True"

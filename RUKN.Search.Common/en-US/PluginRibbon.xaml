@@ -11,7 +11,7 @@
     xmlns:local="clr-namespace:Autodesk.Navisworks.Gui.Roamer.AIRLook;assembly=navisworks.gui.roamer">
     <!-- END STANDARD SECTION DO NOT EDIT -->
 
-    <RibbonTab Id="RUKNBIM" KeyTip="T1">
+    <RibbonTab Id="RUKN.Search" KeyTip="T1">
         <RibbonPanel x:Uid="RibbonPane1_1">
             <RibbonPanelSource x:Uid="RibbonPanelSource_RibbonPanel_1" KeyTip="C1" Title="RUKN Search">
 
@@ -21,12 +21,6 @@
                             KeyTip="B2"
                             ShowText="True"
                             Text="SelectByRevitId"
-                            Orientation="Vertical"/>
-                <local:NWRibbonButton x:Uid="ModelProcessing" Id="ModelProcessing"
-                            Size="Large"
-                            KeyTip="B3"
-                            ShowText="True"
-                            Text="Model Processing"
                             Orientation="Vertical"/>
             </RibbonPanelSource>
         </RibbonPanel>

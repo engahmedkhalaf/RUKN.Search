@@ -9,11 +9,10 @@ using System.Windows;
 
 namespace Rukn.Navisworks.Plugin.Common
 {
-    [Plugin("SelectByRevitIdRibbon", IdentityInformation.DeveloperID, DisplayName = "RUKN Search")]
+    [Plugin("RUKN.Search", IdentityInformation.DeveloperID, DisplayName = "RUKN Search")]
     [RibbonLayout("PluginRibbon.xaml")]
-    [RibbonTab("RUKNBIM", DisplayName = "RUKN Search")]
+    [RibbonTab("RUKN.Search", DisplayName = "RUKN Search")]
     [Command("SelectByRevitId", Icon = "ElementID_16.ico", LargeIcon = "ElementID_32.png", ToolTip = "Select elements using their original Revit ID", DisplayName = "SelectByRevitId")]
-    [Command("ModelProcessing", Icon = "ElementID_16.ico", LargeIcon = "ElementID_32.png", ToolTip = "Model processing and viewpoint generation settings", DisplayName = "Model Processing")]
     public class PluginRibbon : CommonCommandHandlerPlugin
     {
         public override int ExecuteCommand(string name, params string[] parameters)

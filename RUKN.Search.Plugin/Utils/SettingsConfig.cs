@@ -15,10 +15,10 @@ namespace RUKN.Search.Plugin
         public static readonly string currentApiKey = "PlaceHolderApiKey";
 
         private static readonly string _configDir =
-            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "RUKNBIM");
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "RUKN.Search");
 
         private static readonly string _configFile =
-            Path.Combine(_configDir, "ruknbim.config");
+            Path.Combine(_configDir, "ruknsearch.config");
 
         private static readonly object _locker = new object();
 

@@ -1,12 +1,10 @@
 using System;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Controls;
 
 namespace RUKN.Search.Plugin
 {
-    /// <summary>
-    /// Interaction logic for ModelProcessingWindow.xaml
-    /// </summary>
     public partial class ModelProcessingWindow : Window
     {
         public ModelProcessingWindow()
@@ -32,132 +30,17 @@ namespace RUKN.Search.Plugin
         {
             try
             {
-                System.Diagnostics.Process.Start("https://www.ruknbim.com/");
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("https://ruknbim.com") { UseShellExecute = true });
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Unable to open link: " + ex.Message);
+                MessageBox.Show("Could not open link: " + ex.Message);
             }
         }
 
-        private bool _sidePlanesEnabled = false;
-
-        private void TogglePlanes_Click(object sender, RoutedEventArgs e)
+        private void ReadModels_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var state = Autodesk.Navisworks.Api.ComApi.ComApiBridge.State;
-                var curView = state.CurrentView;
-                var clipColl = (Autodesk.Navisworks.Api.Interop.ComApi.InwClippingPlaneColl2)curView.ClippingPlanes();
-
-                _sidePlanesEnabled = !_sidePlanesEnabled;
-
-                if (_sidePlanesEnabled)
-                {
-                    var doc = Autodesk.Navisworks.Api.Application.ActiveDocument;
-                    Autodesk.Navisworks.Api.BoundingBox3D bbox = null;
-
-                    if (!doc.CurrentSelection.IsEmpty)
-                    {
-                        foreach (var item in doc.CurrentSelection.SelectedItems)
-                        {
-                            var box = item.BoundingBox();
-                            if (box != null)
-                            {
-                                if (bbox == null)
-                                {
-                                    bbox = box;
-                                }
-                                else
-                                {
-                                    double minX = System.Math.Min(bbox.Min.X, box.Min.X);
-                                    double minY = System.Math.Min(bbox.Min.Y, box.Min.Y);
-                                    double minZ = System.Math.Min(bbox.Min.Z, box.Min.Z);
-                                    double maxX = System.Math.Max(bbox.Max.X, box.Max.X);
-                                    double maxY = System.Math.Max(bbox.Max.Y, box.Max.Y);
-                                    double maxZ = System.Math.Max(bbox.Max.Z, box.Max.Z);
-                                    bbox = new Autodesk.Navisworks.Api.BoundingBox3D(
-                                        new Autodesk.Navisworks.Api.Point3D(minX, minY, minZ),
-                                        new Autodesk.Navisworks.Api.Point3D(maxX, maxY, maxZ)
-                                    );
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (ComboModel.SelectedItem != null)
-                        {
-                            string selectedModel = ComboModel.SelectedItem.ToString();
-                            foreach (Autodesk.Navisworks.Api.Model model in doc.Models)
-                            {
-                                string name = model.RootItem != null ? model.RootItem.DisplayName : System.IO.Path.GetFileNameWithoutExtension(model.SourceFileName);
-                                if (name == selectedModel && model.RootItem != null)
-                                {
-                                    bbox = model.RootItem.BoundingBox();
-                                    break;
-                                }
-                            }
-                        }
-                    }
-
-                    if (bbox != null)
-                    {
-                        if (clipColl.Count < 6) clipColl.CreatePlane(6);
-
-                        // Plane 3: Left (normal 1, 0, 0)
-                        var p3 = (Autodesk.Navisworks.Api.Interop.ComApi.InwOaClipPlane)clipColl[3];
-                        var n3 = (Autodesk.Navisworks.Api.Interop.ComApi.InwLUnitVec3f)state.ObjectFactory(Autodesk.Navisworks.Api.Interop.ComApi.nwEObjectType.eObjectType_nwLUnitVec3f, null, null);
-                        n3.SetValue(1, 0, 0);
-                        var plane3 = (Autodesk.Navisworks.Api.Interop.ComApi.InwLPlane3f)state.ObjectFactory(Autodesk.Navisworks.Api.Interop.ComApi.nwEObjectType.eObjectType_nwLPlane3f, null, null);
-                        plane3.SetValue(n3, bbox.Min.X);
-                        p3.Plane = plane3;
-                        p3.Enabled = true;
-
-                        // Plane 4: Right (normal -1, 0, 0)
-                        var p4 = (Autodesk.Navisworks.Api.Interop.ComApi.InwOaClipPlane)clipColl[4];
-                        var n4 = (Autodesk.Navisworks.Api.Interop.ComApi.InwLUnitVec3f)state.ObjectFactory(Autodesk.Navisworks.Api.Interop.ComApi.nwEObjectType.eObjectType_nwLUnitVec3f, null, null);
-                        n4.SetValue(-1, 0, 0);
-                        var plane4 = (Autodesk.Navisworks.Api.Interop.ComApi.InwLPlane3f)state.ObjectFactory(Autodesk.Navisworks.Api.Interop.ComApi.nwEObjectType.eObjectType_nwLPlane3f, null, null);
-                        plane4.SetValue(n4, -bbox.Max.X);
-                        p4.Plane = plane4;
-                        p4.Enabled = true;
-
-                        // Plane 5: Front (normal 0, 1, 0)
-                        var p5 = (Autodesk.Navisworks.Api.Interop.ComApi.InwOaClipPlane)clipColl[5];
-                        var n5 = (Autodesk.Navisworks.Api.Interop.ComApi.InwLUnitVec3f)state.ObjectFactory(Autodesk.Navisworks.Api.Interop.ComApi.nwEObjectType.eObjectType_nwLUnitVec3f, null, null);
-                        n5.SetValue(0, 1, 0);
-                        var plane5 = (Autodesk.Navisworks.Api.Interop.ComApi.InwLPlane3f)state.ObjectFactory(Autodesk.Navisworks.Api.Interop.ComApi.nwEObjectType.eObjectType_nwLPlane3f, null, null);
-                        plane5.SetValue(n5, bbox.Min.Y);
-                        p5.Plane = plane5;
-                        p5.Enabled = true;
-
-                        // Plane 6: Back (normal 0, -1, 0)
-                        var p6 = (Autodesk.Navisworks.Api.Interop.ComApi.InwOaClipPlane)clipColl[6];
-                        var n6 = (Autodesk.Navisworks.Api.Interop.ComApi.InwLUnitVec3f)state.ObjectFactory(Autodesk.Navisworks.Api.Interop.ComApi.nwEObjectType.eObjectType_nwLUnitVec3f, null, null);
-                        n6.SetValue(0, -1, 0);
-                        var plane6 = (Autodesk.Navisworks.Api.Interop.ComApi.InwLPlane3f)state.ObjectFactory(Autodesk.Navisworks.Api.Interop.ComApi.nwEObjectType.eObjectType_nwLPlane3f, null, null);
-                        plane6.SetValue(n6, -bbox.Max.Y);
-                        p6.Plane = plane6;
-                        p6.Enabled = true;
-                    }
-                }
-                else
-                {
-                    for (int i = 3; i <= System.Math.Min(6, clipColl.Count); i++)
-                    {
-                        var plane = (Autodesk.Navisworks.Api.Interop.ComApi.InwOaClipPlane)clipColl[i];
-                        plane.Enabled = false;
-                    }
-                }
-
-                state.CurrentView = curView;
-                TextBlockStatus.Text = _sidePlanesEnabled ? "Side planes enabled." : "Side planes disabled.";
-            }
-            catch (System.Exception ex)
-            {
-                TextBlockStatus.Text = "Error: " + ex.Message;
-            }
+            TextBlockStatus.Text = "Reading models from source...";
         }
 
         private void GenerateViewpoints_Click(object sender, RoutedEventArgs e)
@@ -175,37 +58,36 @@ namespace RUKN.Search.Plugin
                 return;
             }
 
-            // Read Offset values
-            double? offsetTop = null;
-            if (CheckOffsetTop.IsChecked == true)
-            {
-                double val;
-                if (double.TryParse(TextOffsetTop.Text, out val))
-                    offsetTop = val;
-            }
+            // Read Offset
+            double offset = 0;
+            double.TryParse(TextOffset.Text, out offset);
 
-            double? offsetBottom = null;
-            if (CheckOffsetBottom.IsChecked == true)
+            // Convert offset to meters based on unit radio selection
+            double offsetInMeters = offset;
+            string unitText = "m";
+            if (RadioMM.IsChecked == true)
             {
-                double val;
-                if (double.TryParse(TextOffsetBottom.Text, out val))
-                    offsetBottom = val;
+                offsetInMeters = offset / 1000.0;
+                unitText = "mm";
+            }
+            else if (RadioCM.IsChecked == true)
+            {
+                offsetInMeters = offset / 100.0;
+                unitText = "cm";
+            }
+            else if (RadioFT.IsChecked == true)
+            {
+                offsetInMeters = offset * 0.3048;
+                unitText = "ft";
             }
 
             // Find checked levels
             var checkedLevels = new System.Collections.Generic.List<string>();
             foreach (var child in PanelLevels.Children)
             {
-                if (child is System.Windows.Controls.StackPanel sp && sp.Tag is System.Windows.Controls.CheckBox cb && cb.IsChecked == true)
+                if (child is CheckBox cb && cb.IsChecked == true)
                 {
-                    foreach (var subChild in sp.Children)
-                    {
-                        if (subChild is System.Windows.Controls.TextBlock tb)
-                        {
-                            checkedLevels.Add(tb.Text);
-                            break;
-                        }
-                    }
+                    checkedLevels.Add(cb.Content.ToString());
                 }
             }
 
@@ -227,23 +109,17 @@ namespace RUKN.Search.Plugin
                     double? elevation = GetLevelElevation(selectedModel, levelName);
                     if (elevation.HasValue)
                     {
-                        double? cutTopZ = offsetTop.HasValue ? (double?)(elevation.Value + offsetTop.Value) : null;
-                        double? cutBottomZ = offsetBottom.HasValue ? (double?)(elevation.Value + offsetBottom.Value) : null;
+                        double cutZ = elevation.Value + offsetInMeters;
 
                         // Apply the section cut using COM API
-                        ApplySectionCut(cutTopZ, cutBottomZ);
+                        ApplySectionCut(cutZ);
 
                         // Capture current view state into a new viewpoint
                         Autodesk.Navisworks.Api.Viewpoint vp = doc.CurrentViewpoint.CreateCopy();
                         
                         // Create a SavedViewpoint
                         Autodesk.Navisworks.Api.SavedViewpoint savedVp = new Autodesk.Navisworks.Api.SavedViewpoint(vp);
-                        string suffix = "";
-                        if (offsetTop.HasValue || offsetBottom.HasValue)
-                        {
-                            suffix = $" (Top:{TextOffsetTop.Text}m, Bot:{TextOffsetBottom.Text}m)";
-                        }
-                        savedVp.DisplayName = $"{selectedModel} - {levelName}{suffix}";
+                        savedVp.DisplayName = $"{selectedModel} - {levelName}" + (offset != 0 ? $" + {offset}{unitText}" : "");
 
                         // Save to document
                         doc.SavedViewpoints.AddCopy(savedVp);
@@ -256,10 +132,10 @@ namespace RUKN.Search.Plugin
 
                 TextBlockStatus.Text = $"Successfully generated {generatedCount} viewpoint(s)!";
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 TextBlockStatus.Text = "Error: " + ex.Message;
-                System.Windows.MessageBox.Show("Viewpoint generation failed: " + ex.Message);
+                MessageBox.Show("Viewpoint generation failed: " + ex.Message);
             }
         }
 
@@ -293,11 +169,11 @@ namespace RUKN.Search.Plugin
                     }
                 }
             }
-            catch (System.Exception) { }
+            catch (Exception) { }
             return null;
         }
 
-        private void ApplySectionCut(double? topZ, double? bottomZ)
+        private void ApplySectionCut(double cutZ)
         {
             try
             {
@@ -305,57 +181,34 @@ namespace RUKN.Search.Plugin
                 var curView = state.CurrentView;
                 var clipColl = (Autodesk.Navisworks.Api.Interop.ComApi.InwClippingPlaneColl2)curView.ClippingPlanes();
 
-                // Ensure we have at least 2 planes
-                if (clipColl.Count < 2)
+                // Make sure we have at least one plane
+                if (clipColl.Count == 0)
                 {
-                    clipColl.CreatePlane(2);
+                    clipColl.CreatePlane(1);
                 }
 
-                // Plane 1: Top cut (normal 0, 0, -1)
                 var plane1 = (Autodesk.Navisworks.Api.Interop.ComApi.InwOaClipPlane)clipColl[1];
-                if (topZ.HasValue)
-                {
-                    var normal = (Autodesk.Navisworks.Api.Interop.ComApi.InwLUnitVec3f)state.ObjectFactory(
-                        Autodesk.Navisworks.Api.Interop.ComApi.nwEObjectType.eObjectType_nwLUnitVec3f, null, null);
-                    normal.SetValue(0, 0, -1);
+                
+                // Normal vector pointing down (0, 0, -1) to cut the top off
+                var normal = (Autodesk.Navisworks.Api.Interop.ComApi.InwLUnitVec3f)state.ObjectFactory(
+                    Autodesk.Navisworks.Api.Interop.ComApi.nwEObjectType.eObjectType_nwLUnitVec3f, null, null);
+                normal.SetValue(0, 0, -1);
 
-                    var plane = (Autodesk.Navisworks.Api.Interop.ComApi.InwLPlane3f)state.ObjectFactory(
-                        Autodesk.Navisworks.Api.Interop.ComApi.nwEObjectType.eObjectType_nwLPlane3f, null, null);
-                    
-                    plane.SetValue(normal, -topZ.Value);
-                    plane1.Plane = plane;
-                    plane1.Enabled = true;
-                }
-                else
-                {
-                    plane1.Enabled = false;
-                }
+                var plane = (Autodesk.Navisworks.Api.Interop.ComApi.InwLPlane3f)state.ObjectFactory(
+                    Autodesk.Navisworks.Api.Interop.ComApi.nwEObjectType.eObjectType_nwLPlane3f, null, null);
+                
+                // To cut at height cutZ with normal (0,0,-1), distance is -cutZ
+                plane.SetValue(normal, -cutZ);
 
-                // Plane 2: Bottom cut (normal 0, 0, 1)
-                var plane2 = (Autodesk.Navisworks.Api.Interop.ComApi.InwOaClipPlane)clipColl[2];
-                if (bottomZ.HasValue)
-                {
-                    var normal = (Autodesk.Navisworks.Api.Interop.ComApi.InwLUnitVec3f)state.ObjectFactory(
-                        Autodesk.Navisworks.Api.Interop.ComApi.nwEObjectType.eObjectType_nwLUnitVec3f, null, null);
-                    normal.SetValue(0, 0, 1);
-
-                    var plane = (Autodesk.Navisworks.Api.Interop.ComApi.InwLPlane3f)state.ObjectFactory(
-                        Autodesk.Navisworks.Api.Interop.ComApi.nwEObjectType.eObjectType_nwLPlane3f, null, null);
-                    
-                    plane.SetValue(normal, bottomZ.Value);
-                    plane2.Plane = plane;
-                    plane2.Enabled = true;
-                }
-                else
-                {
-                    plane2.Enabled = false;
-                }
-
+                plane1.Plane = plane;
+                plane1.Enabled = true;
+                
+                // Save changes back to the current view
                 state.CurrentView = curView;
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                System.Windows.MessageBox.Show("Error applying section cut: " + ex.Message);
+                MessageBox.Show("Error applying section cut: " + ex.Message);
             }
         }
 
@@ -372,9 +225,18 @@ namespace RUKN.Search.Plugin
                     plane.Enabled = false;
                 }
                 state.CurrentView = curView;
-                _sidePlanesEnabled = false;
             }
-            catch (System.Exception) { }
+            catch (Exception) { }
+        }
+
+        private void SaveViewpoints_Click(object sender, RoutedEventArgs e)
+        {
+            TextBlockStatus.Text = "Viewpoints are already saved during generation.";
+        }
+
+        private void ExportData_Click(object sender, RoutedEventArgs e)
+        {
+            TextBlockStatus.Text = "Exporting data...";
         }
 
         private void PopulateModels()
@@ -394,7 +256,7 @@ namespace RUKN.Search.Plugin
                     }
                 }
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 // Silent catch
             }
@@ -434,56 +296,11 @@ namespace RUKN.Search.Plugin
                                     string levelName = child.DisplayName;
                                     if (!string.IsNullOrEmpty(levelName))
                                     {
-                                        var itemPanel = new System.Windows.Controls.StackPanel();
-                                        itemPanel.Orientation = System.Windows.Controls.Orientation.Horizontal;
-                                        itemPanel.Margin = new Thickness(0, 0, 0, 8);
-
-                                        // 1. Checkbox
-                                        var cb = new System.Windows.Controls.CheckBox();
+                                        CheckBox cb = new CheckBox();
+                                        cb.Content = levelName;
                                         cb.IsChecked = true;
-                                        cb.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-                                        cb.Margin = new Thickness(0, 0, 6, 0);
-
-                                        // 2. Revit Level symbol (WPF vector geometry)
-                                        var symbolGrid = new System.Windows.Controls.Grid();
-                                        symbolGrid.Width = 14;
-                                        symbolGrid.Height = 14;
-                                        symbolGrid.Margin = new Thickness(0, 0, 8, 0);
-                                        symbolGrid.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-
-                                        // Outer circle
-                                        var circle = new System.Windows.Shapes.Ellipse();
-                                        circle.Stroke = System.Windows.Media.Brushes.Black;
-                                        circle.StrokeThickness = 1;
-                                        symbolGrid.Children.Add(circle);
-
-                                        // Top-Right filled quadrant
-                                        var path1 = new System.Windows.Shapes.Path();
-                                        path1.Fill = System.Windows.Media.Brushes.Black;
-                                        path1.Data = System.Windows.Media.Geometry.Parse("M 7,7 L 7,0 A 7,7 0 0,1 14,7 Z");
-                                        symbolGrid.Children.Add(path1);
-
-                                        // Bottom-Left filled quadrant
-                                        var path2 = new System.Windows.Shapes.Path();
-                                        path2.Fill = System.Windows.Media.Brushes.Black;
-                                        path2.Data = System.Windows.Media.Geometry.Parse("M 7,7 L 0,7 A 7,7 0 0,1 7,14 Z");
-                                        symbolGrid.Children.Add(path2);
-
-                                        itemPanel.Children.Add(cb);
-                                        itemPanel.Children.Add(symbolGrid);
-
-                                        // 3. Text label
-                                        var tb = new System.Windows.Controls.TextBlock();
-                                        tb.Text = levelName;
-                                        tb.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-                                        tb.Foreground = (System.Windows.Media.Brush)new System.Windows.Media.BrushConverter().ConvertFromString("#18263c");
-                                        tb.FontSize = 12;
-                                        itemPanel.Children.Add(tb);
-
-                                        // Store a reference to checkbox on the itemPanel tag
-                                        itemPanel.Tag = cb;
-
-                                        PanelLevels.Children.Add(itemPanel);
+                                        cb.Margin = new Thickness(0, 0, 0, 8);
+                                        PanelLevels.Children.Add(cb);
                                     }
                                 }
                             }
@@ -492,13 +309,13 @@ namespace RUKN.Search.Plugin
                     }
                 }
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 // Silent catch
             }
         }
 
-        private void ComboModel_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void ComboModel_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ComboModel.SelectedItem != null)
             {

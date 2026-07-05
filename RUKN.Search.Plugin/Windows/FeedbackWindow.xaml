@@ -44,7 +44,7 @@
                             <Grid>
                                 <Image Name="SlideUp_Image" 
                                        Visibility="Visible" 
-                                       Source="/RUKNBIM.SelectByRevitId;component/Resources/SelectByRevitId.png"
+                                       Source="/RUKN.Search;component/Resources/SelectByRevitId.png"
                                        HorizontalAlignment="Left"
                                        Width="115" 
                                        SnapsToDevicePixels="True" 
