@@ -10,7 +10,7 @@
              mc:Ignorable="d"
              Width="360"
              Height="240"
-             Title="Viewpoint by level"
+             Title="RUKN Search"
              ResizeMode="CanResizeWithGrip"
              Topmost="False"
              ShowInTaskbar="True"

@@ -20,15 +20,25 @@ namespace RUKN.Search.Plugin.Utils
         /// <returns></returns>
         public static List<string> splitString(string s)
         {
+            if (string.IsNullOrWhiteSpace(s))
+                return new List<string>();
+
+            string trimmedInput = s.Trim();
+            if (trimmedInput == "Insert Element Id")
+                return new List<string>();
+
             char delimit = ',';
-            return s.Split(delimit).ToList();
+            return s.Split(delimit)
+                    .Select(x => x.Trim())
+                    .Where(x => !string.IsNullOrWhiteSpace(x))
+                    .ToList();
         }
 
         internal static void GetIds(ModelItemCollection modelItemCollection)
         {
             foreach (var ModelItem in modelItemCollection)
             {
-                if (ModelItem.HasGeometry | ModelItem.IsInsert)
+                if (ModelItem.HasGeometry || ModelItem.IsInsert)
                 {
                     ModelItemCollection mic = new ModelItemCollection
                     {
@@ -45,12 +55,16 @@ namespace RUKN.Search.Plugin.Utils
                 }
                 else
                 {
-                    var id = ModelItem.PropertyCategories.FindPropertyByName("LcRevitId", "LcOaNat64AttributeValue").Value.ToDisplayString();
-                    strBuilder = new StringBuilder();
-                    strBuilder.Append(SelectedIds);
-                    strBuilder.Append(id);
-                    strBuilder.Append(",");
-                    SelectedIds = strBuilder.ToString();
+                    var property = ModelItem.PropertyCategories.FindPropertyByName("LcRevitId", "LcOaNat64AttributeValue");
+                    if (property != null && property.Value != null)
+                    {
+                        var id = property.Value.ToDisplayString();
+                        strBuilder = new StringBuilder();
+                        strBuilder.Append(SelectedIds);
+                        strBuilder.Append(id);
+                        strBuilder.Append(",");
+                        SelectedIds = strBuilder.ToString();
+                    }
                 }
             }
         }
@@ -62,6 +76,12 @@ namespace RUKN.Search.Plugin.Utils
         /// <returns></returns>
         public static ModelItemCollection getElements(List<string> li)
         {
+            if (li == null || li.Count == 0)
+            {
+                MessageWindow.Show("Warning", "Please insert one or more Revit Element IDs.");
+                return new ModelItemCollection();
+            }
+
             // Execute Search
             ModelItemCollection items = new ModelItemCollection();
             global::Autodesk.Navisworks.Api.Search search = new global::Autodesk.Navisworks.Api.Search();
@@ -78,12 +98,17 @@ namespace RUKN.Search.Plugin.Utils
             }
             if (items.Count != list.Count) 
             {
-                MessageWindow.Show("Warning", "This is not a valid Id");
+                if (items.Count == 0)
+                {
+                    MessageWindow.Show("Warning", "No matching Revit Element IDs were found in the model.");
+                }
+                else
+                {
+                    MessageWindow.Show("Warning", $"Only {items.Count} out of {list.Count} Revit Element IDs were found.");
+                }
             }
 
-            Autodesk.Navisworks.Api.Application.ActiveDocument.CurrentSelection.
-
-                CopyFrom(items);
+            Autodesk.Navisworks.Api.Application.ActiveDocument.CurrentSelection.CopyFrom(items);
 
             return items;
         }

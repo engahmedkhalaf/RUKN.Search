@@ -40,24 +40,7 @@ namespace Rukn.Navisworks.Plugin.Common
                         MessageBox.Show("ups, something went wrong" + Environment.NewLine + ex.Message);
                     }
                     break;
-                case "ModelProcessing":
-                    try
-                    {
-                        if (!Autodesk.Navisworks.Api.Application.IsAutomated)
-                        {
-                            PluginBuilder pluginBuilder = new PluginBuilder("ModelProcessing");
-                            if (pluginBuilder.pluginRecord is CustomPluginRecord && pluginBuilder.pluginRecord.IsEnabled)
-                            {
-                                ModelProcessingPlugin modelProcessingPlugin = (ModelProcessingPlugin)(pluginBuilder.pluginRecord.LoadedPlugin ?? pluginBuilder.pluginRecord.LoadPlugin());
-                                modelProcessingPlugin.Execute();
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("ups, something went wrong" + Environment.NewLine + ex.Message);
-                    }
-                    break;
+
             }
             return 0;
         }
