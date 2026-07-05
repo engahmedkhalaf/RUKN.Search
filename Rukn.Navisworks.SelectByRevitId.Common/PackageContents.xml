@@ -14,45 +14,45 @@
 					FriendlyVersion="1.0.0.0"
 					HelpFile=""
 					Icon="">
-	<CompanyDetails Name="Rukn" Url="http://www.Rukn.com" Email="contact@Rukn.com" Phone=" " />
+	<CompanyDetails Name="RuknBIM" Url="https://www.ruknbim.com/"  Email="support@ruknbim.com" Phone=" " />
 	<Components Description="2018">
 		<RuntimeRequirements OS="Win64" Platform="NAVMAN|NAVSIM" SeriesMin="Nw15" SeriesMax="Nw15" />
-		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2018/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
+		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2018/RUKNBIM.SelectByRevitId/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
 	</Components>
 	<Components Description="2019">
 		<RuntimeRequirements OS="Win64" Platform="NAVMAN|NAVSIM" SeriesMin="Nw16" SeriesMax="Nw16" />
-		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2019/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
+		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2019/RUKNBIM.SelectByRevitId/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
 	</Components>
 	<Components Description="2020">
 		<RuntimeRequirements OS="Win64" Platform="NAVMAN|NAVSIM" SeriesMin="Nw17" SeriesMax="Nw17" />
-		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2020/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
+		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2020/RUKNBIM.SelectByRevitId/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
 	</Components>
 	<Components Description="2021">
 		<RuntimeRequirements OS="Win64" Platform="NAVMAN|NAVSIM" SeriesMin="Nw18" SeriesMax="Nw18" />
-		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2021/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
+		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2021/RUKNBIM.SelectByRevitId/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
 	</Components>
 	<Components Description="2022">
 		<RuntimeRequirements OS="Win64" Platform="NAVMAN|NAVSIM" SeriesMin="Nw19" SeriesMax="Nw19" />
-		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2022/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
+		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2022/RUKNBIM.SelectByRevitId/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
 	</Components>
 	<Components Description="2023">
 		<RuntimeRequirements OS="Win64" Platform="NAVMAN|NAVSIM" SeriesMin="Nw20" SeriesMax="Nw20" />
-		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2023/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
+		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2023/RUKNBIM.SelectByRevitId/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
 	</Components>
 	<Components Description="2024">
 		<RuntimeRequirements OS="Win64" Platform="NAVMAN|NAVSIM" SeriesMin="Nw21" SeriesMax="Nw21" />
-		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2024/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
+		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2024/RUKNBIM.SelectByRevitId/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
 	</Components>
 	<Components Description="2025">
 		<RuntimeRequirements OS="Win64" Platform="NAVMAN|NAVSIM" SeriesMin="Nw22" SeriesMax="Nw22" />
-		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2025/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
+		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2025/RUKNBIM.SelectByRevitId/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
 	</Components>
 	<Components Description="2026">
 		<RuntimeRequirements OS="Win64" Platform="NAVMAN|NAVSIM" SeriesMin="Nw23" SeriesMax="Nw23" />
-		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2026/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
+		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2026/RUKNBIM.SelectByRevitId/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
 	</Components>
 	<Components Description="2027">
 		<RuntimeRequirements OS="Win64" Platform="NAVMAN|NAVSIM" SeriesMin="Nw24" SeriesMax="Nw24" />
-		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2027/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
+		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2027/RUKNBIM.SelectByRevitId/RUKNBIM.SelectByRevitId.dll" AppDescription="Select by Revit ID." />
 	</Components>
 </ApplicationPackage>
