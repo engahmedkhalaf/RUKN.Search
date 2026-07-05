@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)SelectByIdPlugin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ModelProcessingPlugin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\Analytics.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\SettingsConfig.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Tools.cs" />
@@ -23,6 +24,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Windows\Resources.xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\SelectByIdWindow.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\ModelProcessingWindow.xaml.cs">
+      <DependentUpon>ModelProcessingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Windows\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +43,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Windows\SelectByIdWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Windows\ModelProcessingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

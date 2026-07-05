@@ -13,7 +13,7 @@
 
     <RibbonTab Id="RUKNBIM" KeyTip="T1">
         <RibbonPanel x:Uid="RibbonPane1_1">
-            <RibbonPanelSource x:Uid="RibbonPanelSource_RibbonPanel_1" KeyTip="C1" Title="Select Revit Id">
+            <RibbonPanelSource x:Uid="RibbonPanelSource_RibbonPanel_1" KeyTip="C1" Title="RUKNBIM Tools">
 
 
                 <local:NWRibbonButton x:Uid="SelectByRevitId" Id="SelectByRevitId"
@@ -21,6 +21,12 @@
                             KeyTip="B2"
                             ShowText="True"
                             Text="SelectByRevitId"
+                            Orientation="Vertical"/>
+                <local:NWRibbonButton x:Uid="ModelProcessing" Id="ModelProcessing"
+                            Size="Large"
+                            KeyTip="B3"
+                            ShowText="True"
+                            Text="Model Processing"
                             Orientation="Vertical"/>
             </RibbonPanelSource>
         </RibbonPanel>

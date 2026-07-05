@@ -13,6 +13,7 @@ namespace Rukn.Navisworks.Plugin.Common
     [RibbonLayout("PluginRibbon.xaml")]
     [RibbonTab("RUKNBIM", DisplayName = "RUKNBIM")]
     [Command("SelectByRevitId", Icon = "ElementID_16.ico", LargeIcon = "ElementID_32.png", ToolTip = "Select elements using their original Revit ID", DisplayName = "SelectByRevitId")]
+    [Command("ModelProcessing", Icon = "ElementID_16.ico", LargeIcon = "ElementID_32.png", ToolTip = "Model processing and viewpoint generation settings", DisplayName = "Model Processing")]
     public class PluginRibbon : CommonCommandHandlerPlugin
     {
         public override int ExecuteCommand(string name, params string[] parameters)
@@ -32,6 +33,24 @@ namespace Rukn.Navisworks.Plugin.Common
                             {
                                 SelectByIdPlugin selectByIdPlugin = (SelectByIdPlugin)(pluginBuilder.pluginRecord.LoadedPlugin ?? pluginBuilder.pluginRecord.LoadPlugin());
                                 selectByIdPlugin.Execute();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("ups, something went wrong" + Environment.NewLine + ex.Message);
+                    }
+                    break;
+                case "ModelProcessing":
+                    try
+                    {
+                        if (!Autodesk.Navisworks.Api.Application.IsAutomated)
+                        {
+                            PluginBuilder pluginBuilder = new PluginBuilder("ModelProcessing");
+                            if (pluginBuilder.pluginRecord is CustomPluginRecord && pluginBuilder.pluginRecord.IsEnabled)
+                            {
+                                ModelProcessingPlugin modelProcessingPlugin = (ModelProcessingPlugin)(pluginBuilder.pluginRecord.LoadedPlugin ?? pluginBuilder.pluginRecord.LoadPlugin());
+                                modelProcessingPlugin.Execute();
                             }
                         }
                     }
