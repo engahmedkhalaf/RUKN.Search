@@ -52,9 +52,17 @@ For developers looking to inspect or build the project:
 
 ## Installation
 
-To install the add-in:
-1. Download the compiled release `RUKN.Search.bundle` folder.
-2. Copy the `.bundle` folder into your Autodesk plugins folder:
+You can install the add-in in one of two ways:
+
+### 1. Standalone Installer (Recommended)
+1. Download the standalone installer [RUKN_Search_Setup.exe](file:///d:/API%20Khalaf/Rukn.Bim.Api/WIP/NAVIS/RUKNSearch/Installer/Output/RUKN_Search_Setup.exe).
+2. Run the installer and click **Install Now**.
+   > [!NOTE]
+   > The installer features a modernized custom single-page UI and automatically closes any running Navisworks (`Roamer.exe`) instances before performing the installation to prevent file-lock conflicts.
+
+### 2. Manual Installation
+1. Download the compiled `RUKN.Search.bundle` folder.
+2. Copy the `.bundle` folder into your Autodesk Application Plugins folder:
    `%appdata%\Autodesk\ApplicationPlugins\`
 
 ---
