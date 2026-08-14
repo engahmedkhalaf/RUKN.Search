@@ -15,12 +15,24 @@
 					HelpFile=""
 					Icon="">
 	<CompanyDetails Name="RuknBIM" Url="https://www.ruknbim.com/"  Email="support@ruknbim.com" Phone=" " />
-	<Components Description="2020-2027">
-		<RuntimeRequirements
-			OS="Win64"
-			Platform="NAVMAN|NAVSIM"
-			SeriesMin="Nw17"
-			SeriesMax="Nw24" />
-		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks®" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2024/RUKN.Search/RUKN.Search.dll" AppDescription="Select by Revit ID." />
+	<Components Description="Navisworks 2022">
+		<RuntimeRequirements OS="Win64" Platform="NAVMAN|NAVSIM" SeriesMin="Nw19" SeriesMax="Nw19" />
+		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks® 2022" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2022/RUKN.Search/RUKN.Search.dll" AppDescription="Select by Revit ID." />
+	</Components>
+	<Components Description="Navisworks 2023">
+		<RuntimeRequirements OS="Win64" Platform="NAVMAN|NAVSIM" SeriesMin="Nw20" SeriesMax="Nw20" />
+		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks® 2023" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2023/RUKN.Search/RUKN.Search.dll" AppDescription="Select by Revit ID." />
+	</Components>
+	<Components Description="Navisworks 2024">
+		<RuntimeRequirements OS="Win64" Platform="NAVMAN|NAVSIM" SeriesMin="Nw21" SeriesMax="Nw21" />
+		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks® 2024" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2024/RUKN.Search/RUKN.Search.dll" AppDescription="Select by Revit ID." />
+	</Components>
+	<Components Description="Navisworks 2025">
+		<RuntimeRequirements OS="Win64" Platform="NAVMAN|NAVSIM" SeriesMin="Nw22" SeriesMax="Nw22" />
+		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks® 2025" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2025/RUKN.Search/RUKN.Search.dll" AppDescription="Select by Revit ID." />
+	</Components>
+	<Components Description="Navisworks 2026">
+		<RuntimeRequirements OS="Win64" Platform="NAVMAN|NAVSIM" SeriesMin="Nw23" SeriesMax="Nw23" />
+		<ComponentEntry AppName="Select by Revit ID for Autodesk® Navisworks® 2026" AppType="ManagedPlugin" Version="1.0.0.0" ModuleName="./Contents/dlls/2026/RUKN.Search/RUKN.Search.dll" AppDescription="Select by Revit ID." />
 	</Components>
 </ApplicationPackage>

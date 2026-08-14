@@ -43,10 +43,10 @@ RUKN Search - Select by Revit ID is compiled and verified to work on the followi
 
 For developers looking to inspect or build the project:
 
-* **[RUKN.SelectByRevitId.sln](file:///d:/API%20Khalaf/Rukn.Bim.Api/TEST/RuknSelectByRevitId/RUKN.SelectByRevitId.sln):** The Visual Studio solution file compiling the plugins.
-* **[RUKN.Search.Common/](file:///d:/API%20Khalaf/Rukn.Bim.Api/TEST/RuknSelectByRevitId/RUKN.Search.Common):** Contains shared resources, ribbon initialization (`PluginRibbon.cs`, `PluginRibbon.xaml` localization), and the `PackageContents.xml` configuration for the Autodesk installer format.
-* **[RUKN.Search.Plugin/](file:///d:/API%20Khalaf/Rukn.Bim.Api/TEST/RuknSelectByRevitId/RUKN.Search.Plugin):** Houses the main execution entry points (`SelectByIdPlugin.cs`), GUI dialog window code/styles (`SelectByIdWindow.xaml`, `FeedbackWindow.xaml`), and search/selection logic (`Tools.cs`).
-* **[RUKN.Search.2024/](file:///d:/API%20Khalaf/Rukn.Bim.Api/TEST/RuknSelectByRevitId/RUKN.Search.2024):** Visual Studio target project template for building against Navisworks 2024 SDK.
+* **[RUKN.Search.sln](file:///d:/API%20Khalaf/Rukn.Bim.Api/WIP/NAVIS/RUKNSearch/RUKN.Search.sln):** The Visual Studio solution file compiling the plugins.
+* **[RUKN.Search.Common/](file:///d:/API%20Khalaf/Rukn.Bim.Api/WIP/NAVIS/RUKNSearch/RUKN.Search.Common):** Contains shared resources, ribbon initialization (`PluginRibbon.cs`, `PluginRibbon.xaml` localization), and the `PackageContents.xml` configuration for the Autodesk installer format.
+* **[RUKN.Search.Plugin/](file:///d:/API%20Khalaf/Rukn.Bim.Api/WIP/NAVIS/RUKNSearch/RUKN.Search.Plugin):** Houses the main execution entry points (`SelectByIdPlugin.cs`), GUI dialog window code/styles (`SelectByIdWindow.xaml`, `FeedbackWindow.xaml`), and search/selection logic (`Tools.cs`).
+* **Target Projects (2022-2026):** Individual target projects compiling for respective Autodesk Navisworks versions (e.g., [RUKN.Search.2024/](file:///d:/API%20Khalaf/Rukn.Bim.Api/WIP/NAVIS/RUKNSearch/RUKN.Search.2024)).
 
 ---
 
