@@ -33,14 +33,14 @@ Source: "..\RUKN.Search.bundle\*"; DestDir: "{app}"; Flags: ignoreversion recurs
 [Code]
 var
   TopPanel: TPanel;
-  PublisherLabel: TNewStaticText;
-  AppNameLabel: TNewStaticText;
+  PublisherLabel: TLabel;
+  AppNameLabel: TLabel;
   MiddlePanel: TPanel;
   BottomPanel: TPanel;
   InstallButton: TButton;
   TermsButton: TButton;
   CancelBtn: TButton;
-  SuccessLabel: TNewStaticText;
+  SuccessLabel: TLabel;
 
 // Close Navisworks (Roamer.exe) if it is running before installation
 function InitializeSetup(): Boolean;
@@ -91,24 +91,26 @@ begin
   TopPanel.Color := clBlack;
 
   // Create Publisher Label (RUKNBIM)
-  PublisherLabel := TNewStaticText.Create(WizardForm);
+  PublisherLabel := TLabel.Create(WizardForm);
   PublisherLabel.Parent := TopPanel;
   PublisherLabel.Caption := 'RUKNBIM';
   PublisherLabel.Font.Name := 'Segoe UI';
   PublisherLabel.Font.Size := 20;
   PublisherLabel.Font.Style := [fsBold];
   PublisherLabel.Font.Color := clWhite;
+  PublisherLabel.Transparent := True;
   PublisherLabel.Left := 30;
   PublisherLabel.Top := 22;
   PublisherLabel.Width := TopPanel.Width - 60;
 
   // Create App Name & Version Label
-  AppNameLabel := TNewStaticText.Create(WizardForm);
+  AppNameLabel := TLabel.Create(WizardForm);
   AppNameLabel.Parent := TopPanel;
   AppNameLabel.Caption := '{#MyAppName} {#MyAppVersion}';
   AppNameLabel.Font.Name := 'Segoe UI';
   AppNameLabel.Font.Size := 12;
   AppNameLabel.Font.Color := clWhite;
+  AppNameLabel.Transparent := True;
   AppNameLabel.Left := 30;
   AppNameLabel.Top := 65;
   AppNameLabel.Width := TopPanel.Width - 60;
@@ -160,12 +162,13 @@ begin
   WizardForm.FilenameLabel.Visible := False;
 
   // Create Success Label (hidden initially)
-  SuccessLabel := TNewStaticText.Create(WizardForm);
+  SuccessLabel := TLabel.Create(WizardForm);
   SuccessLabel.Parent := MiddlePanel;
   SuccessLabel.Caption := 'RUKN Search has been installed successfully!';
   SuccessLabel.Font.Size := 13;
   SuccessLabel.Font.Style := [fsBold];
   SuccessLabel.Font.Color := clBlack;
+  SuccessLabel.Transparent := True;
   SuccessLabel.Left := 50;
   SuccessLabel.Top := 110;
   SuccessLabel.Width := 570;
