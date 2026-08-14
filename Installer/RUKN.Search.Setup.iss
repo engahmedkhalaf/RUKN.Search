@@ -65,7 +65,16 @@ end;
 
 procedure CustomCancelButtonClick(Sender: TObject);
 begin
-  WizardForm.Close;
+  if WizardForm.CurPageID = wpFinished then
+  begin
+    // On the finished page, the "NextButton" acts as the native "Finish" button to exit the installer cleanly
+    WizardForm.NextButton.OnClick(WizardForm);
+  end
+  else
+  begin
+    // Otherwise, close/cancel the wizard
+    WizardForm.Close;
+  end;
 end;
 
 procedure InitializeWizard;
