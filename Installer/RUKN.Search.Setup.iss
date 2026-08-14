@@ -33,7 +33,8 @@ Source: "..\RUKN.Search.bundle\*"; DestDir: "{app}"; Flags: ignoreversion recurs
 [Code]
 var
   TopPanel: TPanel;
-  RedHeaderPanel: TPanel;
+  PublisherLabel: TNewStaticText;
+  AppNameLabel: TNewStaticText;
   MiddlePanel: TPanel;
   BottomPanel: TPanel;
   InstallButton: TButton;
@@ -89,15 +90,28 @@ begin
   TopPanel.BevelOuter := bvNone;
   TopPanel.Color := clBlack;
 
-  // Create Red Header Panel on the left side of the top banner
-  RedHeaderPanel := TPanel.Create(WizardForm);
-  RedHeaderPanel.Parent := TopPanel;
-  RedHeaderPanel.Left := 0;
-  RedHeaderPanel.Top := 0;
-  RedHeaderPanel.Width := 380;
-  RedHeaderPanel.Height := 120;
-  RedHeaderPanel.BevelOuter := bvNone;
-  RedHeaderPanel.Color := $2511E8; // Hex #E81125 in BGR format
+  // Create Publisher Label (RUKNBIM)
+  PublisherLabel := TNewStaticText.Create(WizardForm);
+  PublisherLabel.Parent := TopPanel;
+  PublisherLabel.Caption := 'RUKNBIM';
+  PublisherLabel.Font.Name := 'Segoe UI';
+  PublisherLabel.Font.Size := 20;
+  PublisherLabel.Font.Style := [fsBold];
+  PublisherLabel.Font.Color := clWhite;
+  PublisherLabel.Left := 30;
+  PublisherLabel.Top := 22;
+  PublisherLabel.Width := TopPanel.Width - 60;
+
+  // Create App Name & Version Label
+  AppNameLabel := TNewStaticText.Create(WizardForm);
+  AppNameLabel.Parent := TopPanel;
+  AppNameLabel.Caption := '{#MyAppName} {#MyAppVersion}';
+  AppNameLabel.Font.Name := 'Segoe UI';
+  AppNameLabel.Font.Size := 12;
+  AppNameLabel.Font.Color := clWhite;
+  AppNameLabel.Left := 30;
+  AppNameLabel.Top := 65;
+  AppNameLabel.Width := TopPanel.Width - 60;
 
   // Create Middle Body Panel
   MiddlePanel := TPanel.Create(WizardForm);
