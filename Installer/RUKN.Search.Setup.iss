@@ -89,6 +89,7 @@ begin
   TopPanel.Height := 120;
   TopPanel.BevelOuter := bvNone;
   TopPanel.Color := clBlack;
+  TopPanel.ParentBackground := False;
 
   // Create Publisher Label (RUKNBIM)
   PublisherLabel := TLabel.Create(WizardForm);
@@ -124,6 +125,7 @@ begin
   MiddlePanel.Height := 270;
   MiddlePanel.BevelOuter := bvNone;
   MiddlePanel.Color := clWhite;
+  MiddlePanel.ParentBackground := False;
 
   // Create Custom Install Button
   InstallButton := TButton.Create(WizardForm);
@@ -184,6 +186,7 @@ begin
   BottomPanel.Height := 60;
   BottomPanel.BevelOuter := bvNone;
   BottomPanel.Color := $F0F0F0;
+  BottomPanel.ParentBackground := False;
 
   // Create Terms and Conditions Button
   TermsButton := TButton.Create(WizardForm);
